@@ -1,3 +1,3 @@
-module git.dominic-ricottone.com/parcels
+module git.dominic-ricottone.com/~dricottone/parcels
 
-go 1.17
+go 1.19

@@ -15,7 +15,7 @@ regexp.go: build/top-level-domains.txt
 
 .PHONY: clean
 clean:
-	rm parcels regexp.go go.sum
+	rm -f parcels regexp.go go.sum
 
 .PHONY: build
 build: regexp.go
