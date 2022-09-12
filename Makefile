@@ -1,4 +1,6 @@
+INSTALL_DIR?=/usr/local/bin
 URL_ICANN=https://data.iana.org/TLD/tlds-alpha-by-domain.txt
+GO_FILES=$(shell find -name '*.go')
 
 build/top-level-domains.txt:
 	curl -o build/top-level-domains.txt $(URL_ICANN)
@@ -17,7 +19,13 @@ regexp.go: build/top-level-domains.txt
 clean:
 	rm -f parcels regexp.go go.sum
 
-.PHONY: build
-build: regexp.go
+parcels: $(GO_FILES) regexp.go
 	go build
+
+.PHONY: build
+build: parcels
+
+.PHONY: install
+install: parcels
+	install -m755 parcels $(INSTALL_DIR)/parcels
 
