@@ -1,18 +1,21 @@
-# parcel
+# parcels
 
-A tool to *parse URLs*. If you say that fast enough, it sounds like *parcels*.
+A tool and library to *parse URLs*.
+If you say that fast enough, it sounds like *parcels*.
+
+This is mainly intended for use in mail filters.
 
 
 ## Usage
 
-`cat EMAIL | parcel`
+`cat EMAIL | parcels`
 
 This will...
 
  1. re-prints `EMAIL` with URLs replaced by indices
  2. print a postscript of indexed URLs
 
-`cat EMAIL | parcel -n 0`
+`cat EMAIL | parcels -n 0`
 
 This will...
 
