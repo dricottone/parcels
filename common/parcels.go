@@ -79,6 +79,9 @@ func parseFromScanner(scanner *bufio.Scanner, offset int) (string, string, error
 		for i, url := range new_urls {
 			urls.WriteString(fmt.Sprintf("[%d] %s\n", cursor+i, url))
 		}
+
+		// update the cursor
+		cursor += count
 	}
 
 	// Check for scanner errors
