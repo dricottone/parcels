@@ -2,6 +2,9 @@ INSTALL_DIR?=/usr/local/bin
 URL_ICANN=https://data.iana.org/TLD/tlds-alpha-by-domain.txt
 GO_FILES=$(shell find -name '*.go')
 
+clean:
+	rm -f parcels common/regexp.go go.mod go.sum
+
 scripts/top-level-domains.txt:
 	curl -o scripts/top-level-domains.txt $(URL_ICANN)
 
@@ -15,17 +18,18 @@ common/regexp.go: scripts/top-level-domains.txt
 		scripts/regexp.go-part3 \
 		> common/regexp.go
 
-.PHONY: clean
-clean:
-	rm -f parcels common/regexp.go go.sum
+go.mod:
+	go mod init git.sr.ht/~dricottone/parcels
 
-parcels: common/regexp.go $(GO_FILES)
+parcels: go.mod common/regexp.go $(GO_FILES)
 	go build
 
-.PHONY: build
 build: parcels
 
-.PHONY: install
 install: parcels
 	install -m755 parcels $(INSTALL_DIR)/parcels
 
+uninstall:
+	cd $(INSTALL_DIR) && rm -f parcels
+
+.PHONY: clean build install uninstall

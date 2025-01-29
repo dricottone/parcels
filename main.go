@@ -6,7 +6,7 @@ import (
 	"io"
 	"flag"
 
-	"git.dominic-ricottone.com/~dricottone/parcels/common"
+	"git.sr.ht/~dricottone/parcels/common"
 )
 
 func find_in_stream(reader io.Reader, target int) {
