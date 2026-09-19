@@ -19,7 +19,7 @@ common/regexp.go: scripts/top-level-domains.txt
 		> common/regexp.go
 
 go.mod:
-	go mod init git.sr.ht/~dricottone/parcels
+	go mod init tangled.org/dominic-ricottone.com/parcels
 
 parcels: go.mod common/regexp.go $(GO_FILES)
 	go build
